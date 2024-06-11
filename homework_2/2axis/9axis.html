@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>D3 Axis</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <svg width="600" height="900"></svg>
+  <script>
+  </script>
+</body>
+
+
+  <script>
+      // Set the x-scale to scaleBand and label the ticks with the values from a given dataset ["Apple", "Banana", "Orange", "Mango"]. 
+      // Set the y-scale to scaleLinear and label the ticks with custom tick formatting, such as abbreviating large values, e.g., "1M" for 1,000,000.
+      
+      // Select the SVG element
+      const svg = d3.select("svg");
+
+      // Define the scale for the x-axis
+      const xScale = d3.scaleBand()
+      .domain(["Apple", "Banana", "Orange", "Mango"])
+      .range([0, 500]);
+
+      // Create the x-axis
+      const xAxis = d3.axisBottom(xScale);
+
+      // Append the x-axis to the SVG element
+      svg.append("g")
+      .attr("transform", "translate(50, 200)")
+      .call(xAxis);
+
+      // Define the scale for the y-axis
+      const yScale = d3.scaleLinear()
+      .domain([0, 1000000])
+      .range([150, 0]);
+
+      // Create the y-axis
+      const yAxis = d3.axisLeft(yScale)
+      .tickFormat(d3.format(".2s"));
+
+      // Append the y-axis to the SVG element
+      svg.append("g")
+      .attr("transform", "translate(50, 50)")
+      .call(yAxis);
+
+
+
+
+  </script>
+</html>

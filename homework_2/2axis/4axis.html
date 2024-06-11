@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>D3 Axis</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <svg width="600" height="300"></svg>
+  <script>
+  </script>
+</body>
+
+
+<script>
+    // Custom Tick Formatting: Create a y-axis inside an SVG element.
+    // Set the scale to scaleLinear and label the ticks with the values [1000, 2000, 3000, 4000, 5000] 
+    // but formatted with commas, e.g., "1,000", "2,000", "3,000", "4,000".
+
+    // Select the SVG element
+    const svg = d3.select("svg");
+
+    // Define the scale for the y-axis
+    const yScale = d3.scaleLinear()
+    .domain([1000, 5000])
+    .range([0, 150]);
+
+    // Create the y-axis
+    const yAxis = d3.axisLeft(yScale)
+    .tickFormat(d3.format(",.0f"));
+
+    // Append the y-axis to the SVG element
+    svg.append("g")
+    .attr("transform", "translate(50, 10)")
+    .call(yAxis);
+
+</script>
+</html>
